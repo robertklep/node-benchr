@@ -1,6 +1,6 @@
 ## benchr
 
-Node.js benchmark runner, modelled after [`Mocha`](http://mochajs.org/) and [`bencha`](https://www.npmjs.com/package/bencha).
+Node.js benchmark runner, modelled after [`Mocha`](http://mochajs.org/) and [`bencha`](https://www.npmjs.com/package/bencha), based on [Benchmark.js](http://benchmarkjs.com/).
 
 Work in progress!
 
@@ -16,6 +16,23 @@ Run the `benchr` script and provide it with files containing benchmarks:
 
 ```
 $ benchr benchmarks/**/*.js
+```
+
+### Options
+
+```
+$ benchr -r
+benchr – benchmark runner
+
+Usage:
+  benchr [options] <file>...
+
+Options:
+  -h --help           Show this screen
+  -v --version        Show version
+  -d --delay=<s>      Delay between test cycles, in seconds       [default: 0]
+  -M --min-time=<s>   Minimum run time per test cycle, in seconds [default: 0]
+  -m --max-time=<s>   Maximum run time per test cycle, in seconds [default: 5]
 ```
 
 ### Suites + benchmarks
@@ -67,7 +84,7 @@ suite('Finding a substring, async style', function() {
 
 ### TODO
 
-* Before/after hooks
-* Benchmark/suite options (minTime, maxTime, ...)
-* Separate reporters (very hardcoded now)
-* Handle multiple "fastest" benchmarks better
+- [ ] Before/after hooks
+- [x] ~~~Benchmark/suite options (minTime, maxTime, ...)~~~
+- [ ] Separate reporters (very hardcoded now)
+- [ ] Handle multiple "fastest" benchmarks better
