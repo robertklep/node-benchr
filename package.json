@@ -1,6 +1,6 @@
 {
   "name": "benchr",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Benchmark runner",
   "bin" : "./bin/benchr",
   "author": "Robert Klep <robert@klep.name>",
