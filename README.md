@@ -24,7 +24,7 @@ A benchmark file declares one or more suites, each with one or more benchmarks t
 
 For example:
 
-```
+```javascript
 suite('Finding a substring', function() {
 
   benchmark('RegExp#test', function() {
