@@ -1,0 +1,12 @@
+
+benchr – benchmark runner
+
+Usage:
+  benchr [options] <file>...
+
+Options:
+  -h --help           Show this screen
+  -v --version        Show version
+  -d --delay=<s>      Delay between test cycles, in seconds       [default: 0]
+  -M --min-time=<s>   Minimum run time per test cycle, in seconds [default: 0]
+  -m --max-time=<s>   Maximum run time per test cycle, in seconds [default: 5]

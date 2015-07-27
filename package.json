@@ -2,13 +2,14 @@
   "name": "benchr",
   "version": "1.0.0",
   "description": "Benchmark runner",
-  "bin" : "./bin/benchr",
+  "bin": "./bin/benchr",
   "author": "Robert Klep <robert@klep.name>",
   "license": "MIT",
-  "repository" : "robertklep/node-benchr",
+  "repository": "robertklep/node-benchr",
   "dependencies": {
     "benchmark": "^1.0.0",
     "chalk": "^1.1.0",
+    "docopt": "^0.6.2",
     "easy-table": "^1.0.0",
     "microtime": "^1.4.2"
   }
