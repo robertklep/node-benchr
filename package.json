@@ -5,6 +5,7 @@
   "bin" : "./bin/benchr",
   "author": "Robert Klep <robert@klep.name>",
   "license": "MIT",
+  "repository" : "robertklep/node-benchr",
   "dependencies": {
     "benchmark": "^1.0.0",
     "chalk": "^1.1.0",
