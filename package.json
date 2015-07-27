@@ -1,0 +1,14 @@
+{
+  "name": "benchr",
+  "version": "0.0.0",
+  "description": "Benchmark runner",
+  "bin" : "./bin/benchr",
+  "author": "Robert Klep <robert@klep.name>",
+  "license": "MIT",
+  "dependencies": {
+    "benchmark": "^1.0.0",
+    "chalk": "^1.1.0",
+    "easy-table": "^1.0.0",
+    "microtime": "^1.4.2"
+  }
+}
