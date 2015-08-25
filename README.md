@@ -87,5 +87,5 @@ suite('Finding a substring, async style', function() {
 - [ ] Before/after hooks
 - [x] ~~~Benchmark/suite options (minTime, maxTime, ...)~~~
 - [ ] Separate reporters (very hardcoded now)
-- [ ] Handle multiple "fastest" benchmarks better
-- [ ] Promise support (just like Mocha)
+- [x] Handle multiple "fastest" benchmarks better
+- [ ] Promise support (just like Mocha) (may be difficult to implement)
