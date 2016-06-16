@@ -1,12 +1,16 @@
 {
   "name": "benchr",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Benchmark runner",
   "bin": "./bin/benchr",
   "author": "Robert Klep <robert@klep.name>",
   "license": "MIT",
   "repository": "robertklep/node-benchr",
-  "keywords" : [ "benchmark", "runner", "testing" ],
+  "keywords": [
+    "benchmark",
+    "runner",
+    "testing"
+  ],
   "dependencies": {
     "benchmark": "^2.1.0",
     "chalk": "^1.1.3",
