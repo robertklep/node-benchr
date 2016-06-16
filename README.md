@@ -1,3 +1,5 @@
+
+
 ## benchr
 
 Node.js benchmark runner, modelled after [`Mocha`](http://mochajs.org/) and [`bencha`](https://www.npmjs.com/package/bencha), based on [Benchmark.js](http://benchmarkjs.com/).
@@ -39,71 +41,74 @@ Options:
 
 A benchmark file declares one or more suites, each with one or more benchmarks to run.
 
-For example:
+#### Synchronous benchmarks
 
 ```javascript
-suite('Finding a substring', function() {
+suite('Finding a substring', () => {
 
-  benchmark('RegExp#test', function() {
+  benchmark('RegExp#test', () => {
     /o/.test('Hello World!');
   });
 
-  benchmark('String#indexOf', function() {
+  benchmark('String#indexOf', () => {
     'Hello World!'.indexOf('o') > -1;
   });
 
-  benchmark('String#match', function() {
+  benchmark('String#match', () => {
     !!'Hello World!'.match(/o/);
-  });
-
-});
-
-// A contrived async example. Just like with Mocha, when a benchmark accepts
-// an argument it is assumed the benchmark should be run async.
-suite('Finding a substring, async style', function() {
-
-  benchmark('RegExp#test', function(done) {
-    /o/.test('Hello World!');
-    done();
-  });
-
-  benchmark('String#indexOf', function(done) {
-    'Hello World!'.indexOf('o') > -1;
-    done();
-  });
-
-  benchmark('String#match', function(done) {
-    !!'Hello World!'.match(/o/);
-    done();
-  });
-
-});
-
-// Alternatively, you can use promises. For that, you need to set the
-// `defer` option for a benchmark, or for the whole suite.
-suite('Finding a substring, promise style', { defer : true }, function() {
-
-  benchmark('RegExp#test', function() {
-    return Promise.resolve(/o/.test('Hello World!'));
-  });
-
-  benchmark('String#indexOf', function() {
-    return Promise.resolve('Hello World!'.indexOf('o') > -1);
-  });
-
-  benchmark('String#match', { defer : true }, function() {
-    return Promise.resolve(!!'Hello World!'.match(/o/));
   });
 
 });
 ```
 
-(taken from the example on the [Benchmark.js](http://benchmarkjs.com/) website).
+(taken from the example on the [Benchmark.js](http://benchmarkjs.com/) website)
+
+#### Asynchronous benchmarks
+
+##### Using promises
+
+Return a promise from a benchmark function and it will be tested asynchronously:
+
+```javascript
+suite('Timeouts', () => {
+
+  benchmark('100ms', () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 100);
+    });
+  });
+
+  benchmark('200ms', () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 200);
+    });
+  });
+
+});
+```
+
+##### Using callbacks
+
+If a benchmark takes an argument, it is assumed to be a callback function:
+
+```javascript
+suite('Timeouts', () => {
+
+  benchmark('100ms', (done) => {
+    setTimeout(done, 100);
+  });
+
+  benchmark('200ms', (done) => {
+    setTimeout(done, 200);
+  });
+
+});
+```
 
 ### TODO
 
 - [ ] Before/after hooks
-- [x] ~~~Benchmark/suite options (minTime, maxTime, ...)~~~
+- [x] Benchmark/suite options (minTime, maxTime, ...)
 - [ ] Separate reporters (very hardcoded now)
 - [x] Handle multiple "fastest" benchmarks better
-- [ ] Promise support (just like Mocha) (may be difficult to implement)
+- [x] Promises support (just like Mocha)
