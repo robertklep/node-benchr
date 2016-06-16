@@ -78,6 +78,24 @@ suite('Finding a substring, async style', function() {
   });
 
 });
+
+// Alternatively, you can use promises. For that, you need to set the
+// `defer` option for a benchmark, or for the whole suite.
+suite('Finding a substring, promise style', { defer : true }, function() {
+
+  benchmark('RegExp#test', function() {
+    return Promise.resolve(/o/.test('Hello World!'));
+  });
+
+  benchmark('String#indexOf', function() {
+    return Promise.resolve('Hello World!'.indexOf('o') > -1);
+  });
+
+  benchmark('String#match', { defer : true }, function() {
+    return Promise.resolve(!!'Hello World!'.match(/o/));
+  });
+
+});
 ```
 
 (taken from the example on the [Benchmark.js](http://benchmarkjs.com/) website).
