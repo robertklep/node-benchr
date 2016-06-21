@@ -2,8 +2,6 @@
 
 Node.js benchmark runner, modelled after [`Mocha`](http://mochajs.org/) and [`bencha`](https://www.npmjs.com/package/bencha), based on [Benchmark.js](http://benchmarkjs.com/).
 
-Work in progress!
-
 ### Installation
 
 ```
@@ -38,6 +36,13 @@ Options:
 ### Suites + benchmarks
 
 A benchmark file declares one or more suites, each with one or more benchmarks to run.
+
+#### Syntax
+
+```javascript
+suite(NAME[, OPTIONS], FN);
+benchmark(NAME[, OPTIONS], FN);
+```
 
 #### Synchronous benchmarks
 
@@ -85,9 +90,16 @@ suite('Timeouts', () => {
 });
 ```
 
+**NOTE**: to determine if a function under test returns a promise, it is called once before the tests start. If this is undesirable, for instance due to side-effects, set the `promises` option for the benchmark or the entire suite:
+
+```javascript
+suite('Timeouts',  { promises : true }, () => { ... });
+benchmark('100ms', { promises : true }, () => { ... });
+```
+
 ##### Using callbacks
 
-If a benchmark takes an argument, it is assumed to be a callback function:
+If a benchmark takes an argument, it is assumed to be a continuation callback (pass any errors as first argument to abort the test):
 
 ```javascript
 suite('Timeouts', () => {

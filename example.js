@@ -14,22 +14,31 @@ suite('Finding a substring', function() {
 
 });
 
-// A contrived async example.
-suite('Finding a substring, async style', function() {
+// Using promises
+suite('Async timeout testing using promises', () => {
 
-  benchmark('RegExp#test', function(done) {
-    /o/.test('Hello World!');
-    done();
+  benchmark('100ms', () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 100);
+    });
   });
 
-  benchmark('String#indexOf', function(done) {
-    'Hello World!'.indexOf('o') > -1;
-    done();
+  benchmark('200ms', () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 200);
+    });
   });
 
-  benchmark('String#match', function(done) {
-    !!'Hello World!'.match(/o/);
-    done();
+});
+
+suite('Async timeout testing using callbacks', () => {
+
+  benchmark('100ms', (done) => {
+    setTimeout(done, 100);
+  });
+
+  benchmark('200ms', (done) => {
+    setTimeout(done, 200);
   });
 
 });
