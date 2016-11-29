@@ -115,6 +115,20 @@ suite('Timeouts', () => {
 });
 ```
 
+#### Playing nice with linters
+
+To work around linter errors regarding `suite` and `benchmark` being undefined, your test files can export a function that would take `suite` and `benchmark` as its arguments, thereby making the linter happy:
+
+```javascript
+module.exports = (suite, benchmark) => {
+  suite('My test suite', () => {
+    benchmark('Bench 1', ...);
+    benchmark('Bench 2', ...);
+    ...
+  })
+}
+```
+
 ### TODO
 
 - [ ] Before/after hooks
