@@ -44,6 +44,8 @@ suite(NAME[, OPTIONS], FN);
 benchmark(NAME[, OPTIONS], FN);
 ```
 
+Calling `suite()` is optional.
+
 #### Synchronous benchmarks
 
 ```javascript
