@@ -10,3 +10,4 @@ Options:
   -d --delay=<s>      Delay between test cycles, in seconds       [default: 0]
   -M --min-time=<s>   Minimum run time per test cycle, in seconds [default: 0]
   -m --max-time=<s>   Maximum run time per test cycle, in seconds [default: 5]
+  -g --grep=<s>       only run suites matching pattern
