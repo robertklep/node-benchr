@@ -1,6 +1,6 @@
 {
   "name": "benchr",
-  "version": "3.4.0",
+  "version": "4.0.0",
   "description": "Benchmark runner",
   "bin": "./bin/benchr",
   "author": "Robert Klep <robert@klep.name>",
@@ -15,6 +15,10 @@
     "benchmark": "^2.1.0",
     "chalk": "^1.1.3",
     "docopt": "^0.6.2",
-    "easy-table": "^1.0.0"
+    "easy-table": "^1.0.0",
+    "require-all": "^2.2.0"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   }
 }

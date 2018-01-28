@@ -5,9 +5,11 @@ Usage:
   benchr [options] <file>...
 
 Options:
-  -h --help           Show this screen
-  -v --version        Show version
-  -d --delay=<s>      Delay between test cycles, in seconds       [default: 0]
-  -M --min-time=<s>   Minimum run time per test cycle, in seconds [default: 0]
-  -m --max-time=<s>   Maximum run time per test cycle, in seconds [default: 5]
-  -g --grep=<s>       only run suites matching pattern
+  -h --help             Show this screen
+  -V --version          Show version
+  -d --delay=<s>        Delay between test cycles, in seconds       [default: 0]
+  -M --min-time=<s>     Minimum run time per test cycle, in seconds [default: 0]
+  -m --max-time=<s>     Maximum run time per test cycle, in seconds [default: 5]
+  -g --grep=<s>         Only run suites matching pattern
+  -R --reporter=<name>  Reporter to use, `console` or `json` [default: console]
+  -v --verbose          More verbose output

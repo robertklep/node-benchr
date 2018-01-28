@@ -19,20 +19,25 @@ $ benchr benchmarks/**/*.js
 ### Options
 
 ```
-$ benchr -r
+$ benchr -h
 benchr – benchmark runner
 
 Usage:
   benchr [options] <file>...
 
 Options:
-  -h --help           Show this screen
-  -v --version        Show version
-  -d --delay=<s>      Delay between test cycles, in seconds       [default: 0]
-  -M --min-time=<s>   Minimum run time per test cycle, in seconds [default: 0]
-  -m --max-time=<s>   Maximum run time per test cycle, in seconds [default: 5]
-  -g --grep=<s>       only run suites matching pattern
+  -h --help             Show this screen
+  -V --version          Show version
+  -d --delay=<s>        Delay between test cycles, in seconds       [default: 0]
+  -M --min-time=<s>     Minimum run time per test cycle, in seconds [default: 0]
+  -m --max-time=<s>     Maximum run time per test cycle, in seconds [default: 5]
+  -g --grep=<s>         Only run suites matching pattern
+  -R --reporter=<name>  Reporter to use, `console` or `json` [default: console]
+  -v --verbose          More verbose output
+
 ```
+
+Current
 
 ### Suites + benchmarks
 
@@ -132,10 +137,28 @@ module.exports = (suite, benchmark) => {
 }
 ```
 
+### Implementing a reporter
+
+A reporter is a module that should export a function that gets passed a benchmark runner instance as argument.
+
+This runner instance implements the `EventEmitter` interface, and will emit the following events:
+
+* `run.start` / `run.complete`
+* `file.start` / `file.complete`
+* `suite.start` / `suite.complete`
+* `benchmark.start` / `benchmark.complete`
+
+The different parts are explained as follows:
+* a _"run"_ consists of one or more files containing benchmarks
+* a _"file"_ is a file that exports or contains one or more suites
+* a _"suite"_ is a structure that consists of one or more benchmarks (where each benchmark is used in a comparison between the other benchmarks in the same suite)
+* a _"benchmark"_ is a single test
+
 ### TODO
 
-- [ ] Before/after hooks
+- [ ] Option to pass custom reported module
+- [x] Before/after hooks
 - [x] Benchmark/suite options (minTime, maxTime, ...)
-- [ ] Separate reporters (very hardcoded now)
+- [x] Separate reporters (very hardcoded now)
 - [x] Handle multiple "fastest" benchmarks better
 - [x] Promises support (just like Mocha)
