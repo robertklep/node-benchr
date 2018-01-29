@@ -3,6 +3,7 @@
   "version": "4.0.0",
   "description": "Benchmark runner",
   "bin": "./bin/benchr",
+  "main" : "lib/runner.js",
   "author": "Robert Klep <robert@klep.name>",
   "license": "MIT",
   "repository": "robertklep/node-benchr",

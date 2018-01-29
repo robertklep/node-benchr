@@ -26,18 +26,17 @@ Usage:
   benchr [options] <file>...
 
 Options:
-  -h --help             Show this screen
-  -V --version          Show version
-  -d --delay=<s>        Delay between test cycles, in seconds       [default: 0]
-  -M --min-time=<s>     Minimum run time per test cycle, in seconds [default: 0]
-  -m --max-time=<s>     Maximum run time per test cycle, in seconds [default: 5]
-  -g --grep=<s>         Only run suites matching pattern
-  -R --reporter=<name>  Reporter to use, `console` or `json` [default: console]
-  -v --verbose          More verbose output
-
+  -h --help                  Show this screen
+  -V --version               Show version
+  -d --delay=<s>             Delay between test cycles, in seconds       [default: 0]
+  -M --min-time=<s>          Minimum run time per test cycle, in seconds [default: 0]
+  -m --max-time=<s>          Maximum run time per test cycle, in seconds [default: 5]
+  -g --grep=<s>              Only run suites matching pattern
+  -R --reporter=<name/file>  Reporter to use, either a file path or built-in (`console` or `json`) [default: console]
+  -p --progress              Show progress       (depending on reporter)
+  -P --pretty-print          Pretty-print output (depending on reporter)
+  -v --verbose               More verbose output (depending on reporter)
 ```
-
-Current
 
 ### Suites + benchmarks
 
@@ -137,9 +136,27 @@ module.exports = (suite, benchmark) => {
 }
 ```
 
+### Using the Runner programmatically
+
+```
+const Runner = require('benchr');
+const runner = new Runner({
+    reporter    : Function,
+    grep        : String,
+    delay       : Number,
+    minTime     : Number,
+    maxTime     : Number,
+    progress    : Boolean,
+    prettyPrint : Boolean,
+    verbose     : Boolean,
+}, [ "file1.js", "file2.js", ... ]);
+```
+
+All options map to the similarly-named command line options.
+
 ### Implementing a reporter
 
-A reporter is a module that should export a function that gets passed a benchmark runner instance as argument.
+A reporter is a CommonJS module that should export a function that gets passed a benchmark runner instance as argument.
 
 This runner instance implements the `EventEmitter` interface, and will emit the following events:
 
@@ -156,7 +173,7 @@ The different parts are explained as follows:
 
 ### TODO
 
-- [ ] Option to pass custom reported module
+- [x] Option to pass custom reported module
 - [x] Before/after hooks
 - [x] Benchmark/suite options (minTime, maxTime, ...)
 - [x] Separate reporters (very hardcoded now)
