@@ -14,6 +14,7 @@ Run the `benchr` script and provide it with files containing benchmarks:
 
 ```
 $ benchr benchmarks/**/*.js
+$ benchr benchmarks/suite1.js benchmarks/suite2.js benchmarks/suite3.js
 ```
 
 ### Options
