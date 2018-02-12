@@ -1,6 +1,6 @@
 {
   "name": "benchr",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "Benchmark runner",
   "bin": "./bin/benchr",
   "main": "lib/runner.js",
