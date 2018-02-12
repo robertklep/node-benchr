@@ -12,6 +12,7 @@ Options:
   -m --max-time=<s>          Maximum run time per test cycle, in seconds [default: 5]
   -g --grep=<s>              Only run suites matching pattern
   -R --reporter=<name/file>  Reporter to use, either a file path or built-in (`console` or `json`) [default: console]
+  -r --require=<module>      `require()` a module before starting (for instance, `babel-register`)
   -p --progress              Show progress       (depending on reporter)
   -P --pretty-print          Pretty-print output (depending on reporter)
   -v --verbose               More verbose output (depending on reporter)
